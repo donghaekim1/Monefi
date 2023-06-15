@@ -10,7 +10,6 @@ import Swal from "sweetalert2";
 
 const FileManager = () => {
   const [file, setFile] = useState({allFiles: [], search: "", pageIndex: 0, pageSize: 10, current: 1, totalCount: 1});
-
   const [activeTab, setActiveTab] = useState("all");
   const _logger = debug.extend("UploadFile");
 
@@ -32,7 +31,7 @@ const FileManager = () => {
         fileService.getByIsDeleted(file.pageIndex, file.pageSize, true).then(onGetAllFilesSuccess).catch(onGetFilesError);
       }
     }
-  }, [file.pageIndex, file.pageSize, activeTab, file.search]);
+  }, [activeTab, file.search, file.current]);
 
   const onGetAllFilesSuccess = response => {
     _logger("ping ok", response);
